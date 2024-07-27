@@ -1,13 +1,14 @@
 import express from "express";
-import Movies from "./Movies/Movies.mjs";
+import cors from "cors";
+import graphqlMiddleware from "./graphQl.mjs";
 
 const app = express();
 
+app.use(cors());
+
 const PORT = process.env.PORT || 3000;
 
-app.get("/movies", (req, res) => {
-  res.send(Movies);
-});
+app.use("/graphql", graphqlMiddleware);
 
 app.listen(PORT, () => {
   console.log("running");
