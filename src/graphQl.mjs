@@ -1,8 +1,9 @@
 import { graphqlHTTP } from "express-graphql";
 import { buildSchema } from "graphql";
 
-import Movies from "./Movies/Movies.mjs";
-import Stream from "./Movies/Stream.mjs";
+import Movies from "./api/Movies.mjs";
+import Stream from "./api/Stream.mjs";
+import FAQ from "./api/FAQ.mjs";
 
 const schema = buildSchema(`
     type Movies {
@@ -12,14 +13,21 @@ const schema = buildSchema(`
     }
 
     type Stream {
-    id:String!
-    streamTitle:String!
-    image:String!
+      id:String!
+      streamTitle:String!
+      image:String!
+    }
+
+    type FAQ {
+      id:String!
+      faq:String!
+      faqNum:String!
     }
   
     type Query {
       movie: [Movies]
-      stream:[Stream]
+      stream: [Stream]
+      faq:[FAQ]
     }
   
   `);
@@ -31,6 +39,10 @@ const root = {
 
   stream: () => {
     return Stream;
+  },
+
+  faq: () => {
+    return FAQ;
   },
 };
 
