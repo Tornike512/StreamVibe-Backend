@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon ./src/index.mjs",
-    "start": "node ./src/index.mjs"
+    "start": "node ./src/index.mjs",
+    "build": "babel src --out-dir dist"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +22,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/preset-env": "^7.25.3"
   }
 }
